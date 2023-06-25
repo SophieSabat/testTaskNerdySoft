@@ -98,7 +98,13 @@ public class Main {
         } else {
             Product mostExpensiveProduct = null;
             for (Order o : orders) {
-                mostExpensiveProduct = o.getProductList().stream().max(Comparator.comparing(Product::getPrice)).get();
+                Optional<Product> max = o.getProductList().stream().max(Comparator.comparing(Product::getPrice));
+
+                if (mostExpensiveProduct == null) {
+                    mostExpensiveProduct = max.get();
+                } else if (max.get().getPrice() > mostExpensiveProduct.getPrice()) {
+                    mostExpensiveProduct = max.get();
+                }
             }
             return mostExpensiveProduct;
         }
@@ -139,7 +145,11 @@ public class Main {
             }
         }
 
-        return userAgeSum / countOfUser;
+        if (countOfUser != 0) {
+            return userAgeSum / countOfUser;
+        } else {
+            return 0;
+        }
     }
 
     private static Map<Product, List<User>> getProductUserMap(List<Order> orders) {
