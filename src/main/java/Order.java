@@ -22,19 +22,15 @@ public class Order {
     }
 
     public static class OrderBuilder {
-        private User user;
-        private List<Product> productList;
+        private Order order;
 
-        public void setUser(User user) {
-            this.user = user;
-        }
-
-        public void setProductList(List<Product> productList) {
-            this.productList = productList;
+        public OrderBuilder setOrder(Order order) {
+            this.order = order;
+            return this;
         }
 
         public Order build() {
-            return createOrder(user, productList);
+            return this.order;
         }
     }
 }

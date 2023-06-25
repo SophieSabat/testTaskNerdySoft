@@ -79,7 +79,6 @@ public class Main {
         System.out.println("\n");
 
         List<Order> ordersByUserAgeDesc = sortOrdersByUserAgeDesc(orders);
-//        System.out.println("6. b) List of orders sorted by user agge in descending order: " + ordersByUserAgeDesc + "\n");
         System.out.println("6. b) List of orders sorted by user agge in descending order: ");
         ordersByUserAgeDesc.forEach(order -> {
             System.out.print(order.getUser().getAge() + "    -   order: [ " );
@@ -90,7 +89,7 @@ public class Main {
         //TODO 7). Calculate the total weight of each order
         Map<Order, Integer> result = calculateWeightOfEachOrder(orders);
         System.out.println("7. Calculate the total weight of each order \n");
-        result.forEach((key, value) -> System.out.println("order: " + key.getUser() + " " + "total weight: " + value + "\n"));
+        result.forEach((key, value) -> System.out.println("order: " + key + " " + "total weight: " + value + "\n"));
     }
 
     private static Product getMostExpensiveProduct(List<Order> orders) {
@@ -194,7 +193,7 @@ public class Main {
                     totalWeight+= ((ProductReal) p).getWeight();
                 }
             }
-            hashMap.put(new Order.OrderBuilder().build(), totalWeight);
+            hashMap.put(new Order.OrderBuilder().setOrder(order).build(), totalWeight);
             totalWeight = 0;
         }
 
