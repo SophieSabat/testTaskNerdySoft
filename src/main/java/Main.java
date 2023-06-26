@@ -34,6 +34,59 @@ public class Main {
             add(Order.createOrder(user4, List.of(virtualProduct1, virtualProduct2, realProduct1, realProduct2)));
         }};
 
+//        //TODO 1). Create singleton class which will check the code is used already or not
+//        // Singleton class should have the possibility to mark code as used and check if code used
+//        // Example:
+//        // singletonClass.useCode("xxx")
+//        // boolean isCodeUsed = virtualProductCodeManager.isCodeUsed("xxx") --> true;
+//        // boolean isCodeUsed = virtualProductCodeManager.isCodeUsed("yyy") --> false;
+//        System.out.println("1. Create singleton class VirtualProductCodeManager \n");
+//        VirtualProductCodeManager virtualProductCodeManager = new VirtualProductCodeManager();
+//        var isUsed = virtualProductCodeManager.isCodeUsed("xxx");
+//        virtualProductCodeManager.useCode("xxx");
+//        var isUsed2 = virtualProductCodeManager.isCodeUsed("xxx");
+//        System.out.println("Is code used: " + isUsed + "\n");
+//        System.out.println("Is code used: " + isUsed2 + "\n");
+//
+//        //TODO 2). Create a functionality to get the most expensive ordered product
+//        Product mostExpensive = getMostExpensiveProduct(orders);
+//        System.out.println("2. Most expensive product: " + mostExpensive.name + "\n");
+//
+//        //TODO 3). Create a functionality to get the most popular product(product bought by most users) among users
+//        Product mostPopular = getMostPopularProduct(orders);
+//        System.out.println("3. Most popular product: " + mostPopular.name + "\n");
+//
+//        //TODO 4). Create a functionality to get average age of users who bought realProduct2
+//        double averageAge = calculateAverageAge(realProduct2, orders);
+//        System.out.println("4. Average age is: " + averageAge + "\n");
+//
+//        //TODO 5). Create a functionality to return map with products as keys and a list of users
+//        // who ordered each product as values
+//        Map<Product, List<User>> productUserMap = getProductUserMap(orders);
+//        System.out.println("5. Map with products as keys and list of users as value \n");
+//        productUserMap.forEach((key, value) -> {
+//            System.out.print("key: " + key.name + " " + "value: ");
+//            value.forEach(user -> System.out.print(user.getName() + ", "));
+//            System.out.println("\n");
+//        });
+//
+//        //TODO 6). Create a functionality to sort/group entities:
+//        // a) Sort Products by price
+//        // b) Sort Orders by user age in descending order
+//        List<Product> productsByPrice = sortProductsByPrice(List.of(realProduct1, realProduct2, virtualProduct1, virtualProduct2));
+//        System.out.print("6. a) List of products sorted by price: ");
+//        productsByPrice.forEach(product -> System.out.print(product.getName() + "  -  " + product.getPrice() + "    |   "));
+//        System.out.println("\n");
+//
+//        List<Order> ordersByUserAgeDesc = sortOrdersByUserAgeDesc(orders);
+//        System.out.println("6. b) List of orders sorted by user agge in descending order: ");
+//        ordersByUserAgeDesc.forEach(order -> {
+//            System.out.print(order.getUser().getAge() + "    -   order: [ " );
+//            order.getProductList().forEach(product -> System.out.print(product.getName() + " "));
+//            System.out.println("]" + "\n");
+//        });
+
+
         //TODO 1). Create singleton class which will check the code is used already or not
         // Singleton class should have the possibility to mark code as used and check if code used
         // Example:
@@ -41,20 +94,16 @@ public class Main {
         // boolean isCodeUsed = virtualProductCodeManager.isCodeUsed("xxx") --> true;
         // boolean isCodeUsed = virtualProductCodeManager.isCodeUsed("yyy") --> false;
         System.out.println("1. Create singleton class VirtualProductCodeManager \n");
-        VirtualProductCodeManager virtualProductCodeManager = new VirtualProductCodeManager();
-        var isUsed = virtualProductCodeManager.isCodeUsed("xxx");
-        virtualProductCodeManager.useCode("xxx");
-        var isUsed2 = virtualProductCodeManager.isCodeUsed("xxx");
+        var isUsed = false;
         System.out.println("Is code used: " + isUsed + "\n");
-        System.out.println("Is code used: " + isUsed2 + "\n");
 
         //TODO 2). Create a functionality to get the most expensive ordered product
         Product mostExpensive = getMostExpensiveProduct(orders);
-        System.out.println("2. Most expensive product: " + mostExpensive.name + "\n");
+        System.out.println("2. Most expensive product: " + mostExpensive + "\n");
 
         //TODO 3). Create a functionality to get the most popular product(product bought by most users) among users
         Product mostPopular = getMostPopularProduct(orders);
-        System.out.println("3. Most popular product: " + mostPopular.name + "\n");
+        System.out.println("3. Most popular product: " + mostPopular + "\n");
 
         //TODO 4). Create a functionality to get average age of users who bought realProduct2
         double averageAge = calculateAverageAge(realProduct2, orders);
@@ -64,32 +113,21 @@ public class Main {
         // who ordered each product as values
         Map<Product, List<User>> productUserMap = getProductUserMap(orders);
         System.out.println("5. Map with products as keys and list of users as value \n");
-        productUserMap.forEach((key, value) -> {
-            System.out.print("key: " + key.name + " " + "value: ");
-            value.forEach(user -> System.out.print(user.getName() + ", "));
-            System.out.println("\n");
-        });
+        productUserMap.forEach((key, value) -> System.out.println("key: " + key + " " + "value: " +  value + "\n"));
 
         //TODO 6). Create a functionality to sort/group entities:
         // a) Sort Products by price
         // b) Sort Orders by user age in descending order
         List<Product> productsByPrice = sortProductsByPrice(List.of(realProduct1, realProduct2, virtualProduct1, virtualProduct2));
-        System.out.print("6. a) List of products sorted by price: ");
-        productsByPrice.forEach(product -> System.out.print(product.getName() + "  -  " + product.getPrice() + "    |   "));
-        System.out.println("\n");
-
+        System.out.println("6. a) List of products sorted by price: " + productsByPrice + "\n");
         List<Order> ordersByUserAgeDesc = sortOrdersByUserAgeDesc(orders);
-        System.out.println("6. b) List of orders sorted by user agge in descending order: ");
-        ordersByUserAgeDesc.forEach(order -> {
-            System.out.print(order.getUser().getAge() + "    -   order: [ " );
-            order.getProductList().forEach(product -> System.out.print(product.getName() + " "));
-            System.out.println("]" + "\n");
-        });
+        System.out.println("6. b) List of orders sorted by user agge in descending order: " + ordersByUserAgeDesc + "\n");
 
         //TODO 7). Calculate the total weight of each order
         Map<Order, Integer> result = calculateWeightOfEachOrder(orders);
         System.out.println("7. Calculate the total weight of each order \n");
-        result.forEach((key, value) -> System.out.println("order: " + key + " " + "total weight: " + value + "\n"));
+        result.forEach((key, value) -> System.out.println("order: " + key + " " + "total weight: " +  value + "\n"));
+
     }
 
     private static Product getMostExpensiveProduct(List<Order> orders) {
